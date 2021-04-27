@@ -1,0 +1,144 @@
+@import "../../base/mixins.scss";
+
+.popup {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(69, 69, 69, 0.8);
+
+  .button {
+    width: 128px;
+    height: 40px;
+    margin-top: 56px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 14px;
+    background-color: var(--white);
+    color: #017cc9;
+    border: 2px solid #017cc9;
+    &:hover {
+      background-color: #017cc9;
+      color: var(--white);
+    }
+  }
+}
+
+.popupWrap {
+  position: relative;
+  width: 560px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--grey-2);
+  border-radius: 8px;
+}
+
+.popupCloseBtn {
+  position: absolute;
+  top: 40px;
+  right: 48px;
+  cursor: pointer;
+}
+
+.popupImg {
+  width: 32px;
+  height: 32px;
+}
+
+.popupTitle {
+  position: relative;
+  margin-top: 18px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--dark-blue);
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+		right: calc(50% - 41.5px);
+    bottom: -15px;
+    height: 2px;
+    width: 83px;
+    background: var(--dark-blue);
+  }
+}
+
+.popupText {
+  max-width: 240px;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  color: var(--grey-3);
+}
+
+.popupConclusion {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.01em;
+  color: var(--dark-blue);
+
+  span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.popupInputWrap {
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  .input-wrapper {
+    position: relative;
+    button {
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 0px;
+      height: 48px;
+      width: 60px;
+      border-radius: 6px 0 0 6px;
+      background: none;
+      color: #017cc9;
+      background: var(--white);
+      border-left: 1px solid var(--grey-2);
+      border-bottom: 1px solid var(--grey-2);
+      border-top: 1px solid var(--grey-2);
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 14px;
+      z-index: 999;
+    }
+  }
+}
+
+.mt-4 {
+  margin-top: 4px;
+}
+
+@include mobile() {
+  .popupWrap {
+    margin: 0 20px;
+  }
+
+  .popupCloseBtn {
+    right: 28px;
+  }
+}

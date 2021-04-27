@@ -1,0 +1,62 @@
+@import "../../base/mixins.scss";
+
+.stakeUnstake {
+  display: flex;
+  flex-direction: column;
+  max-width: 240px;
+  max-height: 150px;
+  margin-right: 80px;
+
+  .button {
+    width: 112px;
+    height: 40px;
+    margin-top: 24px;
+    font-size: 12px;
+    line-height: 14px;
+    align-self: flex-end;
+    background: var(--light-blue);
+    border-radius: 6px;
+
+    &:hover {
+      background: var(--blue) !important;
+      color: var(--white);
+      border: none;
+    }
+  }
+
+  &:nth-of-type(2) {
+    margin-right: 18%;
+  }
+}
+
+.stakeUnstakeTitle {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--dark-blue);
+}
+
+.stakeUnstakeBalance {
+  align-self: flex-start;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  color: var(--grey-3);
+}
+
+@include display-xxl() {
+  .stakeUnstake:nth-of-type(2) {
+    margin-right: 216px;
+  }
+}
+
+@include display-lg() {
+  .stakeUnstake {
+    margin-right: 20px;
+  }
+  .stakeUnstake:nth-of-type(2) {
+    margin-right: 60px;
+  }
+}

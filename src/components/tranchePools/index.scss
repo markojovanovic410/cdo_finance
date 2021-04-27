@@ -1,0 +1,136 @@
+.d-flex{
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.rdt_TableHeader{
+	display: none !important;
+}
+.tranche_txt1{
+	font-size: 14px;
+	line-height: 21px;
+	letter-spacing: 0.01em;
+	color: #203546;
+	text-align: left;
+	margin-bottom: 5px;
+
+	b{
+		width: 120px;
+		font-weight: bold;
+		display: inline-block;
+	}
+}
+.cdo-datatable{
+	background: transparent;
+	margin-bottom: 30px;
+
+	.left-img-txt{
+		padding-left: 25px;
+		font-weight: bold;
+	}	
+	.btn-transfer{
+		padding: 5px 15px;
+    	color: var(--blue);
+    	font-family: Roboto;
+    	font-weight: bold;
+    	font-size: 12px;
+    	line-height: 14px;
+    	cursor: pointer;
+	}
+	button{
+		font-size: 12px;
+    	line-height: 14px;
+    	margin-top: 0px;
+	}
+	.rdt_TableHeadRow, .rdt_Table, .rdt_TableRow{
+		background: transparent;
+	}
+	.rdt_TableHeadRow, .rdt_TableRow{
+		padding: 25px 0;
+		border-bottom: 0.5px solid #A8BECB !important;
+	}
+	.rdt_TableCell, .rdt_TableCol{
+		padding: 0px 5px;
+		text-align: left;
+	}
+	.rdt_TableCell{
+		font-size: 14px;
+	}
+	.rdt_TableCol{
+		font-size: 12px;
+	}
+}
+
+.cdo-accordion{
+
+  .card-header{
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    letter-spacing: 0.01em;
+    font-size: 14px;
+    border-color: #A8BEC8;
+  }
+  .card{
+    background: transparent;
+    margin-left: 0px;
+    margin-right: 10px;
+    color: #203546;
+    border-left: none;
+    border-right: none;
+    border-color: #A8BEC8;
+  }
+  .card.active{
+  	background: #FBFBFB;
+  	.card-header{
+ 	 	background: #FBFBFB;
+  	}
+    .card-header svg{
+      	transform: rotate(180deg);
+    }
+  }
+  .card-header, .card-body{
+  	padding: 20px 30px;
+  }
+}
+.yp-additional-info{
+	font-size: 12px;
+	font-weight: normal;
+	margin-right: 10px;
+}
+.yp-additional-info.total-info{
+	font-size: 14px;
+	font-weight: bold;
+	border-bottom: 0.5px solid #A8BEC8;
+
+}
+.cdo-accordion .card-header, .yp-additional-info{
+  	text-align: left;
+  	padding: 20px 30px;
+  	*:nth-child(1), *:nth-child(2){
+  		flex-basis: 20%;
+  	}
+  	*:nth-child(3){
+  		flex-basis: 40%;
+  	}
+  	*:nth-child(4){
+  		flex-basis: 3%;
+  		text-align: right;
+  	}
+}
+
+.nav-seniorTranche.tab-list{
+	.tab-item{
+		font-size: 14px !important;
+	}
+}
+
+.nav-juniorTranche.tab-list{
+	.tab-item{
+		font-size: 14px !important;
+	}
+}

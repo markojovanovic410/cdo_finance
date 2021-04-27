@@ -1,0 +1,20 @@
+@import "../../base/mixins.scss";
+
+.pageContainer {
+  width: calc(100% - 95px);
+  min-height: calc(100vh - 136px);
+  padding: 56px 0 56px 64px;
+  background: var(--white);
+  border-radius: 24px 0px 0px 0px;
+  text-align: center;
+  text-align: -webkit-center;
+  text-align: -moz-center;
+}
+
+@include mobile() {
+  .pageContainer {
+    padding: 20px;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+  }
+}

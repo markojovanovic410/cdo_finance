@@ -1,0 +1,79 @@
+@import "../../base/mixins.scss";
+
+.codexStaking {
+  background: var(--light-grey);
+}
+
+.codexStakingContainer {
+  display: flex;
+  margin-left: 56px;
+}
+
+.codexStakingCards {
+  display: flex;
+  margin: 48px 0 21px;
+
+  .card {
+    width: 352px;
+  }
+}
+
+.connectBtn {
+  margin-top: 30px;
+  font-size: 18px;
+  padding: 15px 30px;
+  background-color: #C0E5FD;
+  color: #017CC9;
+  border-radius: 12px;
+}
+
+.connectBtn:hover {
+  background-color: #017CC9;
+  color: #fff;
+}
+
+.announceDiv {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #00AC46;
+  color: white;
+}
+
+.blockNumber {
+  background-color: #0A6002;
+  color: #D6FFCE;
+  font-weight: 500;
+  padding: 3px;
+}
+
+@include display-xxl() {
+  .codexStakingCards {
+    justify-content: space-between;
+  }
+}
+
+@include mobile() {
+  .codexStakingContainer {
+    margin: 0 20px;
+    flex-direction: column;
+  }
+
+  .codexStakingCards {
+    flex-direction: column;
+
+    .card {
+      width: unset;
+      max-width: 352px;
+    }
+  }
+
+  .infoContainer {
+    padding: 40px 40px;
+  }
+
+  .connectBtn {
+    max-width: 80%;
+    white-space: normal;
+  }
+}

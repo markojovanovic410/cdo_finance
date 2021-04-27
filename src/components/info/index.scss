@@ -1,0 +1,22 @@
+.info {
+  color: var(--home-backgorund);
+  text-align: left;
+  width: 100%;
+}
+
+.infoTitle {
+  position: relative;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -16px;
+    height: 2px;
+    width: 83px;
+    background: var(--home-backgorund);
+  }
+}

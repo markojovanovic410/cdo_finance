@@ -1,0 +1,29 @@
+.button {
+  background: var(--light-blue);
+  padding: 5px 10px;
+  color: var(--blue);
+  border: none;
+  border-radius: 12px;
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+
+  &.--main {
+    background: var(--blue);
+    color: var(--white);
+  }
+
+  &.--disabled {
+    color: var(--grey-7) !important;
+    background: var(--grey-6) !important;
+    border: none !important;
+  }
+
+  &:hover {
+    transition-delay: 0s;
+    transition-duration: 0.3s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+}

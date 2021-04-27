@@ -1,0 +1,19 @@
+.heading {
+  position: relative;
+  margin-top: 56px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--dark-blue);
+  text-align: left;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -16px;
+    height: 2px;
+    width: 83px;
+    background: var(--dark-blue);
+  }
+}

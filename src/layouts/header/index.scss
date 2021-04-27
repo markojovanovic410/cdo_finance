@@ -1,0 +1,56 @@
+@import "../../base/mixins.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 56px;
+
+  .button {
+    width: 212px;
+    height: 56px;
+    background: unset;
+    border: solid 2px var(--blue);
+    color: var(--blue);
+  }
+  .button:hover {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+  }
+}
+
+@include mobile() {
+  .header {
+    padding: 20px;
+    flex-direction: column;
+
+    .button {
+      margin-top: 30px;
+      align-self: center;
+      height: 39px;
+    }
+    img {
+      width: 235px;
+      object-fit: cover;
+    }
+  }
+}
+
+@include display-sm() {
+  .homeMain {
+    h1 {
+      font-size: 36px !important;
+    }
+    p {
+      font-size: 18px  !important;
+    }
+  }
+}
+
+@include display-xs() {
+  .homeMain {
+    h1 {
+      font-size: 32px !important;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.iconLink {
+	display: block;
+
+	&:hover {
+		transform: scale(1.2);
+		transition: transform .3s ease-out;
+	}
+}

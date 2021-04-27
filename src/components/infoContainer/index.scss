@@ -1,0 +1,16 @@
+@import '../../base/mixins.scss';
+
+
+.infoContainer {
+	display: flex;
+	padding: 40px 56px;
+	background: var(--dark-blue);
+	border-radius: 24px 0px 0px 24px;
+}
+
+@include mobile() {
+	.infoContainer {
+		width: calc(100% + 20px);
+		flex-direction: column;
+	}
+}

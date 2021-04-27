@@ -1,0 +1,36 @@
+@import '../../base/mixins.scss';
+
+
+.earnedCard {
+	width: 352px;
+	height: 146px;
+	padding: 27px 33px;
+	border-radius: 12px;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+}
+
+.earnedCardTitle {
+	font-size: 12px;
+	line-height: 14px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--home-backgorund);
+}
+
+.earnedCardAmount {
+	margin-top: 16px;
+	font-weight: 500;
+	font-size: 36px;
+	line-height: 42px;
+	color: var(--home-backgorund);
+}
+
+@include mobile() {
+	.earnedCard {
+		width: unset;
+		height: unset;
+		max-width: 352px;
+		margin-bottom: 20px;
+	}
+}
