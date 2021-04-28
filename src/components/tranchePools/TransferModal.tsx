@@ -29,7 +29,7 @@ export const TransferModal = ({ showModal, parentCallback, modalPlatform, modalI
 			<Modal dialogClassName="transfer-modal" show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered >
                 <Modal.Header closeButton>
                     <div>
-                        <div>Senior Tranche Redemption</div>
+                        <div>Senior Tranche Transfer</div>
                         <div><span className="left-img-txt" style={{ backgroundImage: 'url("/images/icons/autofarm.png")' }}>{modalPlatform}</span></div>
                         <div><span className="left-img-txt" style={{ backgroundImage: `url(${modalImage})` }}>{modalToken}</span></div>
                     </div>
