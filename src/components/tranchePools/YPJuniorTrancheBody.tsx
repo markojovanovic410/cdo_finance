@@ -184,7 +184,7 @@ export const YPJuniorTrancheBody = () => {
           </Tab.Content>
       </Tab.Container>
       <WithdrawalModal showModal={withdrawalModalShow} parentCallback = {withdrawalModalCallback} modalPlatform={tokenPlatform} modalImage={tokenImage} modalToken={token} waitTime={waitTime} withdrawalAmount={withdrawalAmount} type={type} forfeits={forfeits}/>
-      <WithdrawalStep2Modal showModal={withdrawalStep2ModalShow} parentCallback = {withdrawalStep2ModalCallback} modalPlatform={tokenPlatform} modalImage={tokenImage} modalToken={token} type={type} waitTime={waitTime} exchangeRate={exchangeRate} forfeits={forfeits}/>
+      <WithdrawalStep2Modal showModal={withdrawalStep2ModalShow} parentCallback = {withdrawalStep2ModalCallback} modalPlatform={tokenPlatform} modalImage={tokenImage} modalToken={token} type={type} waitTime={waitTime} exchangeRate={exchangeRate} forfeits={forfeits} availableBalance={withdrawalAmount}/>
       </div>
  		</>
 	);
