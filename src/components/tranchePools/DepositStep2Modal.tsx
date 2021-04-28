@@ -14,10 +14,17 @@ interface DepositStep2ModalProps{
     modalImage: string,
     modalToken: string,
     type: number,
+    balance: string,
 }
 
-export const DepositStep2Modal = ({ showModal, parentCallback, modalPlatform, modalImage, modalToken, type }: DepositStep2ModalProps) => {
+export const DepositStep2Modal = ({ showModal, parentCallback, modalPlatform, modalImage, modalToken, type, balance }: DepositStep2ModalProps) => {
   const [durationType, setDurationType] = useState(1);
+  const [toleranceType, setToleranceType] = useState(2);
+  const [showSettingPanel, setShowSettingPanel] = useState(false);
+  const [tolerance, setTolerance] = useState("0.5%");
+  const [deadline, setDeadline] = useState("20 minutes");
+  const [tempDeadline, setTempDeadline] = useState("20 minutes");
+  const [depositAmount, setDepositAmount] = useState("0.00");
   const handleModalClose = () => {
         parentCallback(false, false);
     };
@@ -35,7 +42,33 @@ export const DepositStep2Modal = ({ showModal, parentCallback, modalPlatform, mo
     };
     const handleDuration = (type: number) => {
         setDurationType(type)
-      };
+    };
+    const handleResetTransaction = () => {
+        setShowSettingPanel(false);
+        setTolerance("0.5%");
+        setDeadline("20 minutes");
+        setTempDeadline(deadline);
+        setToleranceType(2);
+    };
+    const handleApplyTransaction = () => {
+        setShowSettingPanel(false);
+        if(toleranceType == 0)
+            setTolerance("0.1%");
+        if(toleranceType == 1)
+            setTolerance("0.3%");
+        if(toleranceType == 2)
+            setTolerance("0.5%");
+        if(toleranceType == 3)
+            setTolerance("0.5");
+        setDeadline(tempDeadline);
+    };
+    const handleSettingPanel = (show: boolean) => {
+        if(!show) {
+            setTempDeadline(deadline);
+        }
+        setShowSettingPanel(show);
+    }
+      
 	return (
 		<>
 			<Modal dialogClassName="deposit-step2-modal" show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} aria-labelledby="contained-modal-title-vcenter" centered >
@@ -50,17 +83,18 @@ export const DepositStep2Modal = ({ showModal, parentCallback, modalPlatform, mo
             <Modal.Body>
                 <p className="modal-desc">Deposit amount</p>
                 <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
-                    <InputGroup.Text id="deposit-amount">MAX</InputGroup.Text>
+                    <InputGroup.Prepend onClick={() => setDepositAmount(balance)}>
+                        <InputGroup.Text id="deposit-amount">MAX</InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl
                     placeholder="Deposit Amount"
                     aria-label="Deposit Amount"
                     aria-describedby="deposit-amount"
-                    value="0.00"
+                    value={depositAmount}
+                    onChange={e => setDepositAmount(e.target.value)}
                     />
                 </InputGroup>
-                <p className="modal-desc">Available Balance: 0.00 {modalToken}</p>
+                <p className="modal-desc">Available Balance: {balance} {modalToken}</p>
                 {
                     type == 0 &&
                     <div>
@@ -107,15 +141,40 @@ export const DepositStep2Modal = ({ showModal, parentCallback, modalPlatform, mo
                         <div className="detail-section">
                             <div className="clearfix title">
                                 <p className="float-left">Transaction details</p>
-                                <p className="float-right"><img src="/images/icons/setting-icon.png" /></p>
+                                <p className="float-right">
+                                    <img src="/images/icons/setting-icon.png" onClick={() => handleSettingPanel(!showSettingPanel)} />
+                                    <div className={showSettingPanel ? "setting-panel open" : "setting-panel close"}>
+                                        <p>Customise transaction</p>
+                                        <div className="tolerance-section">
+                                            <p className="modal-desc">Slippage tolerance</p>
+                                            <div className="tolerance d-flex">
+                                                <div className={toleranceType == 0 ? "active" : ""} onClick={() => setToleranceType(0)}>0.1%</div>
+                                                <div className={toleranceType == 1 ? "active" : ""} onClick={() => setToleranceType(1)}>0.3%</div>
+                                                <div className={toleranceType == 2 ? "active" : ""} onClick={() => setToleranceType(2)}>0.5%</div>
+                                                <div className={toleranceType == 3 ? "active" : ""} onClick={() => setToleranceType(3)}>0.5</div>
+                                            </div>
+                                        </div>
+                                        <div className="deadline-section">
+                                            <p className="modal-desc">Transaction deadline</p>
+                                            <div>
+                                                <input type="text" value={tempDeadline} onChange={e => setTempDeadline(e.target.value)}/>
+                                            </div>
+                                        </div>
+                                        <div className="button-section d-flex">
+                                            <button className="btn-reset button" onClick={handleResetTransaction}>Reset changes</button>
+                                            <button className="btn-apply button" onClick={handleApplyTransaction}>Apply changes</button>
+                                        </div>
+                                        <div className="up-arrow"></div>
+                                    </div>
+                                </p>
                             </div>
                             <div className="clearfix">
                                 <p className="float-left">Slippage tolerance <img src="/images/icons/circle-info-icon.png" /></p>
-                                <p className="float-right">0.5%</p>
+                                <p className="float-right">{tolerance}</p>
                             </div>
                             <div className="clearfix">
                                 <p className="float-left">Transaction deadline <img src="/images/icons/circle-info-icon.png" /></p>
-                                <p className="float-right">20 minutes</p>
+                                <p className="float-right">{deadline}</p>
                             </div>
                         </div>
                         <div className="desc-section">
