@@ -17,9 +17,11 @@ interface WithdrawalStep2ModalProps{
     waitTime: string,
     forfeits: string,
     exchangeRate: string,
+    availableBalance: string,
 }
 
-export const WithdrawalStep2Modal = ({ showModal, parentCallback, modalPlatform, modalImage, modalToken, type, waitTime, exchangeRate, forfeits }: WithdrawalStep2ModalProps) => {
+export const WithdrawalStep2Modal = ({ showModal, parentCallback, modalPlatform, modalImage, modalToken, type, waitTime, exchangeRate, forfeits, availableBalance }: WithdrawalStep2ModalProps) => {
+  const [depositAmount, setDepositAmount] = useState("0.00");
   const handleModalClose = () => {
         parentCallback(false, false);
     };
@@ -43,17 +45,18 @@ export const WithdrawalStep2Modal = ({ showModal, parentCallback, modalPlatform,
             <Modal.Body>
                 <p className="modal-desc">Withdrawal amount</p>
                 <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
+                    <InputGroup.Prepend onClick={() => setDepositAmount(availableBalance)}>
                     <InputGroup.Text id="withdrawal-amount">MAX</InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl
                     placeholder="Withdrawal Amount"
                     aria-label="Withdrawal Amount"
                     aria-describedby="withdrawal-amount"
-                    value="0.00"
+                    value={depositAmount}
+                    onChange={e => setDepositAmount(e.target.value)}
                     />
                 </InputGroup>
-                <p className="modal-desc">Available Balance: 0.00 jr{modalToken}-auto</p>
+                <p className="modal-desc">Available Balance: {availableBalance} jr{modalToken}-auto</p>
                 {
                     type == 0 &&
                     <div>
