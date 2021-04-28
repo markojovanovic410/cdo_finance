@@ -2,8 +2,13 @@ import React, {useState, useEffect, useRef} from 'react'
 import { Tab, Nav } from 'react-bootstrap';
 import { Button } from '../button';
 import DataTable from 'react-data-table-component';
+import {WithdrawalModal} from './WithdrawalModal';
+import {WithdrawalStep2Modal} from './WithdrawalStep2Modal';
 
 export const YPJuniorTrancheBody = () => {
+    const wait_time = "2 hrs 45 min";
+    const forfeits_str = "123";
+    const exchange_rate = "1,123";
   const ap_data = [
     { id: 1, platform: 'Autofarm', token: 'BNB', token_img:'/images/icons/bnb.svg', balance:'567', apy:2.12, wait_time: '2 days 12 hrs 4 min 5 sec' }, 
                 
@@ -35,7 +40,7 @@ export const YPJuniorTrancheBody = () => {
     },
     {
         name: '',
-        cell: () => <div className="td-actions ml-auto"><Button>Withdraw</Button></div>,
+        cell: (row:any) => <div className="td-actions ml-auto"><Button onClick={() => handleModalShow(row.platform, row.token_img, row.token, wait_time, row.balance)}>Withdraw</Button></div>,
     },
   ];
 
@@ -104,9 +109,39 @@ export const YPJuniorTrancheBody = () => {
         selector: 'transaction_time',
     },
   ];
-
+  const [withdrawalModalShow, setWithdrawalModalShow] = useState(false);
+  const [withdrawalStep2ModalShow, setWithdrawalStep2ModalShow] = useState(false);
+  const [tokenPlatform, setTokenPlatform] = useState("");
+  const [tokenImage, setTokenImage] = useState("");
+  const [token, setToken] = useState("");
+  const [waitTime, setWaitTime] = useState("");
+  const [withdrawalAmount, setWithdrawalAmount] = useState("");
+  const [type, setType] = useState(0);
+  const [forfeits, setForfeits] = useState("");
+  const [exchangeRate, setExchangeRate] = useState("");
+  const handleModalShow = (platform: string, token_img: string, token: string, wait_time: string, amount: string) => {
+    setTokenPlatform(platform);
+    setTokenImage(token_img);
+    setToken(token);
+    setWaitTime(wait_time);
+    setWithdrawalAmount(amount);
+    setForfeits(forfeits_str);
+    setWithdrawalModalShow(true);
+    setExchangeRate(exchange_rate);
+    setWithdrawalStep2ModalShow(false);
+  }
+  const withdrawalModalCallback = (showModal: boolean, type: number, next: boolean) => {
+    setWithdrawalModalShow(showModal)
+    setType(type);
+    setWithdrawalStep2ModalShow(next)
+  };
+  const withdrawalStep2ModalCallback = (showModal: boolean, back: boolean) => {
+    setWithdrawalStep2ModalShow(showModal)
+    setWithdrawalModalShow(back)
+  };
 	return (
 		<>
+        <div>
       <div className="tranche_txt1 mb-3"><b>Total BALANCE</b>$ 2,139,934.09</div>
 	    <Tab.Container defaultActiveKey="tab_activePositions">
           <Nav className="tab-list nav-juniorTranche">
@@ -148,6 +183,9 @@ export const YPJuniorTrancheBody = () => {
               </Tab.Pane>
           </Tab.Content>
       </Tab.Container>
+      <WithdrawalModal showModal={withdrawalModalShow} parentCallback = {withdrawalModalCallback} modalPlatform={tokenPlatform} modalImage={tokenImage} modalToken={token} waitTime={waitTime} withdrawalAmount={withdrawalAmount} type={type} forfeits={forfeits}/>
+      <WithdrawalStep2Modal showModal={withdrawalStep2ModalShow} parentCallback = {withdrawalStep2ModalCallback} modalPlatform={tokenPlatform} modalImage={tokenImage} modalToken={token} type={type} waitTime={waitTime} exchangeRate={exchangeRate} forfeits={forfeits}/>
+      </div>
  		</>
 	);
 }
