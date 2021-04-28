@@ -77,7 +77,7 @@ export function TranchePools() {
       },
       {
           name: '',
-          cell: (row:any) => <div className="td-actions ml-auto"><Button onClick={() => handleModalShow(row.platform, row.token_img, row.token, row.senior_apy, row.junior_apy)}>Deposit</Button></div>,
+          cell: (row:any) => <div className="td-actions ml-auto"><Button onClick={() => handleModalShow(row.platform, row.token_img, row.token, row.senior_apy, row.junior_apy, row.balance)}>Deposit</Button></div>,
           grow: 1.6,
       },
   ];
@@ -90,14 +90,16 @@ export function TranchePools() {
   const [token, setToken] = useState("");
   const [seniorApy, setSeniorApy] = useState(0);
   const [juniorApy, setJuniorApy] = useState(0);
+  const [balance, setBalance] = useState("");
   const [seniorLiquidity, setSeniorLiquidity] = useState(emptyBigNumber.toFormat(2));
   const [juniorLiquidity, setJuniorLiquidity] = useState(emptyBigNumber.toFormat(2));
-  const handleModalShow = (platform: string, token_img: string, token: string, senior_apy: number, junior_apy: number) => {
+  const handleModalShow = (platform: string, token_img: string, token: string, senior_apy: number, junior_apy: number, balance: string) => {
     setTokenPlatform(platform);
     setTokenImage(token_img);
     setToken(token);
     setSeniorApy(senior_apy);
     setJuniorApy(junior_apy);
+    setBalance(balance);
     setSeniorLiquidity(seniorLiquidityValue.toFormat(2));
     setJuniorLiquidity(juniorLiquidityValue.toFormat(2));
     setDepositModalShow(true);
@@ -155,7 +157,7 @@ export function TranchePools() {
               </Tab.Content>
           </Tab.Container>
           <DepositModal showModal={depositModalShow} parentCallback = {depositModalCallback} modalPlatform={tokenPlatform} modalImage={tokenImage} modalToken={token} type={type} seniorFixedAPY={seniorApy} seniorLiquidity={seniorLiquidity} juniorFixedAPY={juniorApy} juniorLiquidity={juniorLiquidity} />
-          <DepositStep2Modal showModal={depositStep2ModalShow} parentCallback = {depositStep2ModalCallback} modalPlatform={tokenPlatform} modalImage={tokenImage} modalToken={token} type={type}/>
+          <DepositStep2Modal showModal={depositStep2ModalShow} parentCallback = {depositStep2ModalCallback} modalPlatform={tokenPlatform} modalImage={tokenImage} modalToken={token} type={type} balance={balance}/>
         </PageContainer>
       </div>
     </div>
