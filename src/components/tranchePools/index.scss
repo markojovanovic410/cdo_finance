@@ -153,6 +153,9 @@
 				line-height: 21px;
 				padding: 45px 0 15px 0;
 				border-bottom: 2px solid #203546;
+				> div:first-child {
+					font-size: 18px;
+				}
 			}
 			.back {
 				position: absolute;
@@ -185,6 +188,11 @@
 				font-size: 11px !important;
 				line-height: 16px !important;
 				color: #989898 !important;
+			}
+			.input-group-prepend {
+				:hover {
+					cursor: pointer;
+				}
 			}
 			.desc-section {
 				font-size: 14px;
@@ -325,7 +333,7 @@
 					line-height: 21px;
 					letter-spacing: 0.01em;
 					padding: 13px 0 11px 0;
-					border-bottom: 1px solid;
+					border-bottom: 1px solid #E5E5E5;
 				}
 				.select-date {
 					.MuiFormControl-root {
@@ -399,6 +407,101 @@
 					line-height: 16px;
 					padding-bottom: 16px;
 					border-bottom: 1px solid #E5E5E5;
+					.float-right {
+						position: relative;
+						img:hover {
+							cursor: pointer;
+						}
+						.setting-panel.open {
+							display: block;
+						}
+						.setting-panel.close {
+							display: none;
+						}
+						.setting-panel {
+							padding: 24px;
+							position: absolute;
+							box-shadow: 0px -2px 4px rgba(193, 193, 193, 0.35), 1px 2px 6px rgba(193, 193, 193, 0.25);
+							background-color: #FFFFFF;
+							border-radius: 8px;
+							z-index: 100;
+							min-width: 345px;
+							top: 30px;
+    						right: -75px;
+							opacity: 1;
+							> p {
+								font-weight: 500;
+								font-size: 14px;
+								line-height: 16px;
+								color: #203546;
+								padding-bottom: 16px;
+								border-bottom: 1px solid #E5E5E5;
+								margin-bottom: 16px;
+							}
+							.tolerance-section {
+								.modal-desc {
+									margin-bottom: 6px;
+								}
+								.tolerance div {
+									background-color: #FFFFFF;
+									border: 1px solid #E6E6E6;
+									box-sizing: border-box;
+									border-radius: 8px;
+									padding: 12px;
+									font-size: 14px;
+									line-height: 16px;
+									text-align: center;
+									color: #203546;
+									width: 20%;
+								}
+								.tolerance div:hover {
+									cursor: pointer;
+								}
+								.tolerance div.active {
+									border: 1px solid #017CC9;
+									color: #017CC9;
+								}
+							}
+							.deadline-section {
+								margin: 24px 0 48px;
+								.modal-desc {
+									margin-bottom: 6px;
+								}
+								input {
+									background-color: #FFFFFF;
+									border: 1px solid #E6E6E6;
+									box-sizing: border-box;
+									border-radius: 8px;
+									font-weight: normal;
+									font-size: 14px;
+									line-height: 16px;
+									color: #203546;
+									padding: 12px;
+									min-width: 75%;
+								}
+							}
+							.button-section {
+								button {
+									margin-top: 0;
+								}
+								.btn-apply {
+									color: white;
+									background-color: #017CC9;
+								}
+							}
+							.up-arrow {
+								background-color: white;
+								transform: rotate(45deg);
+								position: absolute;
+								width: 10px;
+								height: 10px;
+								top: -6px;
+								right: 80px;
+								box-shadow: 0px -2px 4px rgba(193, 193, 193, 0.35), 1px 2px 6px rgba(193, 193, 193, 0.25);
+								z-index: 99;
+							}
+						}
+					}
 				}
 				.clearfix:nth-child(2) {
 					margin: 16px 0;
